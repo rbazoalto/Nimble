@@ -73,5 +73,20 @@ namespace Nimble.Tests
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void GivenInputWithManyCustomDelimiterReturnsListOfParameters()
+        {
+            // Configure
+            InputParser parser = new InputParser();
+            string input = "//[##][!!]\n2##5!!6";
+            string[] expectedResult = new string[] { "2", "5", "6" };
+
+            // Test
+            string[] result = parser.Parse(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }

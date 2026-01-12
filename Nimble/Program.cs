@@ -9,7 +9,7 @@ namespace Nimble
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("Please add numbers to be added separated by comma or '\\n' char (i.e. 1,2\\n3) Negative numbers are not allowed.");
-            Console.Write("You can also define your own delimiter using the following format (//[##]\\n1##5##4): ");
+            Console.Write("You can also define your own delimiters using the following format (//[##][!!]\\n1##5!!4): ");
             string input = Console.ReadLine();
             // We replace the string with the \n char
             input = input.Replace("\\n", "\n");

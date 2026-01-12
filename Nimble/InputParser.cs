@@ -41,7 +41,7 @@ namespace Nimble
 
             if (hasCustomDelimiter || hasCustomLongDelimiter)
             {
-                string[] customDelimiters = { delimiterInput };
+                string[] customDelimiters = delimiterInput.Split("][", StringSplitOptions.None);
                 string[] delimiters = _defaultDelimiters.Union(customDelimiters).ToArray();
                 numberInput = input.Split(delimiters, StringSplitOptions.None);
             }
