@@ -8,14 +8,22 @@ namespace Nimble
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Please add 2 numbers to be added separated by comma (i.e. 1,2)");
+            string input = Console.ReadLine();
+            
             // objects initialization
             InputParser inputParser = new InputParser();
             NumberValidator numberValidator = new NumberValidator();
             Calculator calculator = new Calculator();
-            string input = "1,2";
             
             // First we parse the string to have the list of parameters
             string[] parsedInput = inputParser.Parse(input);
+
+            // Throw an exception if more than 2 numbers are created.
+            if (parsedInput.Length != 2)
+            {
+                throw new ArgumentException();
+            }
 
             // Then we validate the parameters to get a list of numbers
             List<int> numbers = numberValidator.Validate(parsedInput);
