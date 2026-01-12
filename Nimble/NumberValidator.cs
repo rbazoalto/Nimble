@@ -21,18 +21,34 @@ namespace Nimble
             bool success = false;
             int value = 0;
             List<int> numbers = new List<int>();
+            string negativeNumbers = string.Empty;
 
             foreach (var item in parsedInput)
             {
                 success = int.TryParse(item, out value);
                 if (success)
                 {
+                    // if this is a negative number, we will collected them.
+                    if (value < 0)
+                    {
+                        negativeNumbers = negativeNumbers + value + ",";
+                        continue;
+                    }
                     numbers.Add(value);
                 }
                 else
                 {
                     numbers.Add(0);
                 }
+            }
+
+            int lenght = negativeNumbers.Length;
+
+            // if negative numbers were detected, an exception is thrown
+            if (lenght > 0)
+            {
+                // We remove the last ',' from the negative numbers list.
+                throw new ArgumentException("The following negative numbers were detected: " + negativeNumbers.Remove(lenght - 1));
             }
 
             return numbers;

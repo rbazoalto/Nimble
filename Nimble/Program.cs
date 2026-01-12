@@ -8,7 +8,7 @@ namespace Nimble
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.Write("Please add numbers to be added separated by comma or '\\n' char (i.e. 1,2\\n3): ");
+            Console.Write("Please add numbers to be added separated by comma or '\\n' char (i.e. 1,2\\n3) Negative numbers are not allowed: ");
             string input = Console.ReadLine();
             // We replace the string with the \n char
             input = input.Replace("\\n", "\n");
