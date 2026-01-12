@@ -18,12 +18,7 @@ namespace Nimble
         /// <returns>An array with all the parameters</returns>
         public string[] Parse(string input)
         {
-            string[] parameters = input.Split(',');
-            if (parameters.Length > 2)
-            {
-                throw new ArgumentException("More than 2 parameters were set in the input: " + input);
-            }
-            return parameters;
+            return input.Split(','); 
         }
     }
 }
