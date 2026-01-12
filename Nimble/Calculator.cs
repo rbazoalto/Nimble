@@ -47,5 +47,42 @@ namespace Nimble
             message = operation.Remove(operation.Length - 1) + " = " + res; 
             return res;
         }
+
+        /// <summary>
+        /// Returns the Multiplication of the numbers
+        /// </summary>
+        /// <param name="numbers">A list of numbers</param>
+        /// <returns>The multiplication of the numbers.</returns>
+        public int Multiply(List<int> numbers)
+        {
+            int res = 1;
+            foreach (var item in numbers)
+            {
+                res *= item;
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Returns the Multiplication of the numbers
+        /// </summary>
+        /// <param name="numbers">A list of numbers</param>
+        /// <param name="message">The formatted operation like 1*2</param>
+        /// <returns>The multiplication of the numbers</returns>
+        public int Multiply(List<int> numbers, out string message)
+        {
+            int res = 1;
+            string operation = string.Empty;
+
+            foreach (var item in numbers)
+            {
+                res *= item;
+                operation = operation + item + "*";
+            }
+
+            message = operation.Remove(operation.Length - 1) + " = " + res;
+            return res;
+        }
     }
 }

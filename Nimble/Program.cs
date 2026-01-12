@@ -55,6 +55,12 @@ namespace Nimble
 
                     // Print the result
                     Console.WriteLine(message);
+
+                    // Finally, we calculate the multiplication of the numbers
+                    res = calculator.Multiply(numbers, out message);
+
+                    // Print the result
+                    Console.WriteLine(message);
                 }
                 catch (ArgumentException ex)
                 {

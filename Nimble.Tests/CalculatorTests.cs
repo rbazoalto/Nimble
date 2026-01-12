@@ -44,5 +44,36 @@ namespace Nimble.Tests
             // Assert
             Assert.AreEqual(expectedMessage, message);
         }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectMultiplication()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 4, 2 };
+            int expectedResult = 8;
+
+            // Test
+            int result = calculator.Multiply(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectMultiplicationAndMessage()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 4, 2 };
+            string message = string.Empty;
+            string expectedMessage = "4*2 = 8";
+
+            // Test
+            int result = calculator.Multiply(input, out message);
+
+            // Assert
+            Assert.AreEqual(expectedMessage, message);
+        }
     }
 }
