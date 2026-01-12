@@ -75,5 +75,67 @@ namespace Nimble.Tests
             // Assert
             Assert.AreEqual(expectedMessage, message);
         }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectSubstraction()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 5, 2 };
+            int expectedResult = 3;
+
+            // Test
+            int result = calculator.Substract(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectSubstractionAndMessage()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 5, 2 };
+            string message = string.Empty;
+            string expectedMessage = "5-2 = 3";
+
+            // Test
+            int result = calculator.Substract(input, out message);
+
+            // Assert
+            Assert.AreEqual(expectedMessage, message);
+        }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectDivision()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 8, 2 };
+            int expectedResult = 4;
+
+            // Test
+            int result = calculator.Divide(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectDivisionAndMessage()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 8, 2 };
+            string message = string.Empty;
+            string expectedMessage = "8/2 = 4";
+
+            // Test
+            int result = calculator.Divide(input, out message);
+
+            // Assert
+            Assert.AreEqual(expectedMessage, message);
+        }
     }
 }

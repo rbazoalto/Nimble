@@ -84,5 +84,109 @@ namespace Nimble
             message = operation.Remove(operation.Length - 1) + " = " + res;
             return res;
         }
+
+        /// <summary>
+        /// Returns the Substraction of the numbers
+        /// </summary>
+        /// <param name="numbers">A list of numbers</param>
+        /// <returns>The Substraction of the first number against the other numbers.</returns>
+        public int Substract(List<int> numbers)
+        {
+            int res = 0;
+            int index = 0;
+            foreach (var item in numbers)
+            {
+                if (index == 0)
+                {
+                    res = item;
+                    index++;
+                    continue;
+                }
+                res -= item;
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Returns the Substraction of the numbers
+        /// </summary>
+        /// <param name="numbers">A list of numbers</param>
+        /// <param name="message">The formatted operation like 1-2</param>
+        /// <returns>The substraction of the first number against the other numbers</returns>
+        public int Substract(List<int> numbers, out string message)
+        {
+            int res = 0;
+            string operation = string.Empty;
+            int index = 0;
+
+            foreach (var item in numbers)
+            {
+                if (index == 0)
+                {
+                    res = item;
+                    index++;
+                    operation = item + "-";
+                    continue;
+                }
+                res -= item;
+                operation = operation + item + "-";
+            }
+
+            message = operation.Remove(operation.Length - 1) + " = " + res;
+            return res;
+        }
+
+        /// <summary>
+        /// Returns the Division of the numbers
+        /// </summary>
+        /// <param name="numbers">A list of numbers</param>
+        /// <returns>The division of the numbers.</returns>
+        public int Divide(List<int> numbers)
+        {
+            int res = 0;
+            int index = 0;
+            foreach (var item in numbers)
+            {
+                if (index == 0)
+                {
+                    res = item;
+                    index++;
+                    continue;
+                }
+                res /= item;
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// Returns the Division of the numbers
+        /// </summary>
+        /// <param name="numbers">A list of numbers</param>
+        /// <param name="message">The formatted operation like 1/2</param>
+        /// <returns>The division of the first number against the other numbers</returns>
+        public int Divide(List<int> numbers, out string message)
+        {
+            int res = 0;
+            string operation = string.Empty;
+            int index = 0;
+
+            foreach (var item in numbers)
+            {
+                if (index == 0)
+                {
+                    res = item;
+                    index++;
+                    operation = item + "/";
+                    continue;
+                }
+                res /= item;
+                operation = operation + item + "/";
+            }
+
+            message = operation.Remove(operation.Length - 1) + " = " + res;
+            return res;
+        }
     }
 }
