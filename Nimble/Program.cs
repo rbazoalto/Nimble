@@ -8,31 +8,33 @@ namespace Nimble
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.WriteLine("Please add 2 numbers to be added separated by comma (i.e. 1,2)");
+            Console.Write("Please add numbers to be added separated by comma (i.e. 1,2,3): ");
             string input = Console.ReadLine();
             
             // objects initialization
             InputParser inputParser = new InputParser();
             NumberValidator numberValidator = new NumberValidator();
             Calculator calculator = new Calculator();
-            
-            // First we parse the string to have the list of parameters
-            string[] parsedInput = inputParser.Parse(input);
+            int res = 0;
 
-            // Throw an exception if more than 2 numbers are created.
-            if (parsedInput.Length != 2)
+            try
             {
-                throw new ArgumentException();
+                // First we parse the string to have the list of parameters
+                string[] parsedInput = inputParser.Parse(input);
+
+                // Then we validate the parameters to get a list of numbers
+                List<int> numbers = numberValidator.Validate(parsedInput);
+
+                // Finally, we calculate the sum of the numbers
+                res = calculator.Sum(numbers);
+
+                // Print the result
+                Console.WriteLine("{0} = {1}.", input, res);
             }
-
-            // Then we validate the parameters to get a list of numbers
-            List<int> numbers = numberValidator.Validate(parsedInput);
-
-            // Finally, we calculate the sum of the numbers
-            int res = calculator.Sum(numbers);
-
-            // Print the result
-            Console.WriteLine("{0} = {1}.", input, res);
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("ERROR: {0}.", ex.Message);
+            }
         }
     }
 }
