@@ -6,7 +6,6 @@ namespace Nimble
 {
     public class NumberValidator
     {
-        public static readonly int _upperBound = 1000;
         public NumberValidator()
         {
 
@@ -17,21 +16,27 @@ namespace Nimble
         /// </summary>
         /// <param name="parsedInput">Arrayy with the parameters</param>
         /// <returns>A list of numbers</returns>
-        public List<int> Validate(string[] parsedInput)
+        public List<int> Validate(string[] parsedInput, int upperBound = 1000, bool denyNegativeNumbers = true)
         {
             bool success = false;
             int value = 0;
             List<int> numbers = new List<int>();
             string negativeNumbers = string.Empty;
+
+            // if the upperBound is negative or zero, we use the default value.
+            if (upperBound < 1)
+            {
+                upperBound = 1000;
+            }
             
             foreach (var item in parsedInput)
             {
                 success = int.TryParse(item, out value);
                 // only valid numbers smaller than the upper bound are taken
-                if (success && value <= _upperBound)
+                if (success && value <= upperBound)
                 {
-                    // if this is a negative number, we will collected them.
-                    if (value < 0)
+                    // if this is a negative number, we will collect them.
+                    if (value < 0 && denyNegativeNumbers)
                     {
                         negativeNumbers = negativeNumbers + value + ",";
                         continue;
