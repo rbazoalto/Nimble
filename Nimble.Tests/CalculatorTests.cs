@@ -20,12 +20,29 @@ namespace Nimble.Tests
             // Configure
             Calculator calculator = new Calculator();
             List<int> input = new List<int> {1,2};
+            int expectedResult = 3;
 
             // Test
             int result = calculator.Sum(input);
 
             // Assert
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void IfInputCleanReturnsCorrectSumAndMessage()
+        {
+            // Configure
+            Calculator calculator = new Calculator();
+            List<int> input = new List<int> { 1, 2 };
+            string message = string.Empty;
+            string expectedMessage = "1+2 = 3";
+
+            // Test
+            int result = calculator.Sum(input, out message);
+
+            // Assert
+            Assert.AreEqual(expectedMessage, message);
         }
     }
 }

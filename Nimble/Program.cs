@@ -18,6 +18,7 @@ namespace Nimble
             NumberValidator numberValidator = new NumberValidator();
             Calculator calculator = new Calculator();
             int res = 0;
+            string message = string.Empty;
 
             try
             {
@@ -28,10 +29,10 @@ namespace Nimble
                 List<int> numbers = numberValidator.Validate(parsedInput);
 
                 // Finally, we calculate the sum of the numbers
-                res = calculator.Sum(numbers);
+                res = calculator.Sum(numbers, out message);
 
                 // Print the result
-                Console.WriteLine("{0} = {1}.", input.Replace("\n", "\\n"), res);
+                Console.WriteLine(message);
             }
             catch (ArgumentException ex)
             {
