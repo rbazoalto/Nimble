@@ -28,5 +28,20 @@ namespace Nimble.Tests
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void GivenInputWithSpecialCharReturnsListOfParameters()
+        {
+            // Configure
+            InputParser parser = new InputParser();
+            string input = "1,2\n3";
+            string[] expectedResult = new string[] { "1", "2", "3" };
+
+            // Test
+            string[] result = parser.Parse(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }

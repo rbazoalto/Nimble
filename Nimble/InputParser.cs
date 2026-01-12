@@ -6,6 +6,8 @@ namespace Nimble
 {
     public class InputParser
     {
+        public static readonly string[] _delimiters = new string[] { ",", "\n" };
+
         public InputParser()
         {
 
@@ -18,7 +20,7 @@ namespace Nimble
         /// <returns>An array with all the parameters</returns>
         public string[] Parse(string input)
         {
-            return input.Split(','); 
+            return input.Split(_delimiters, StringSplitOptions.None); 
         }
     }
 }

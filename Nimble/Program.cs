@@ -8,9 +8,10 @@ namespace Nimble
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Console.Write("Please add numbers to be added separated by comma (i.e. 1,2,3): ");
+            Console.Write("Please add numbers to be added separated by comma or '\\n' char (i.e. 1,2\\n3): ");
             string input = Console.ReadLine();
-            
+            // We replace the string with the \n char
+            input = input.Replace("\\n", "\n");
             // objects initialization
             InputParser inputParser = new InputParser();
             NumberValidator numberValidator = new NumberValidator();
@@ -29,7 +30,7 @@ namespace Nimble
                 res = calculator.Sum(numbers);
 
                 // Print the result
-                Console.WriteLine("{0} = {1}.", input, res);
+                Console.WriteLine("{0} = {1}.", input.Replace("\n", "\\n"), res);
             }
             catch (ArgumentException ex)
             {
