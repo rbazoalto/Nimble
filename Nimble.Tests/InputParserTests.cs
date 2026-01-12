@@ -49,7 +49,22 @@ namespace Nimble.Tests
         {
             // Configure
             InputParser parser = new InputParser();
-            string input = "//#e\n2#e5";
+            string input = "//#\n2#5";
+            string[] expectedResult = new string[] { "2", "5" };
+
+            // Test
+            string[] result = parser.Parse(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void GivenInputWithCustomLongDelimiterReturnsListOfParameters()
+        {
+            // Configure
+            InputParser parser = new InputParser();
+            string input = "//[##]\n2##5";
             string[] expectedResult = new string[] { "2", "5" };
 
             // Test

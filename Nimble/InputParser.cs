@@ -22,13 +22,26 @@ namespace Nimble
         public string[] Parse(string input)
         {
             string[] numberInput;
-            bool hasCustomDelimiter = input.StartsWith("//");
+            int indexOfEOL = input.IndexOf("\n");
+            bool hasCustomDelimiter = input.StartsWith("//") && indexOfEOL == 3;
+            bool hasCustomLongDelimiter = input.StartsWith("//[");
+            string delimiterInput = string.Empty;
 
             if (hasCustomDelimiter)
             {
-                string delimitersInput = input.Substring(2, input.IndexOf("\n") - 2);
-                input = input.Substring(input.IndexOf("\n") + 1);
-                string[] customDelimiters = { delimitersInput };
+                delimiterInput = input.ElementAt(2).ToString();
+                input = input.Substring(4);
+            }
+
+            if (hasCustomLongDelimiter)
+            {
+                delimiterInput = input.Substring(3, indexOfEOL - 4);
+                input = input.Substring(indexOfEOL + 1);
+            }
+
+            if (hasCustomDelimiter || hasCustomLongDelimiter)
+            {
+                string[] customDelimiters = { delimiterInput };
                 string[] delimiters = _defaultDelimiters.Union(customDelimiters).ToArray();
                 numberInput = input.Split(delimiters, StringSplitOptions.None);
             }
