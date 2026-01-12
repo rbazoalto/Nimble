@@ -43,5 +43,20 @@ namespace Nimble.Tests
             // Assert
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void IfParametersInputWithBigNumbersReturnsListOfNumbersWithZeros()
+        {
+            // Configure
+            NumberValidator validator = new NumberValidator();
+            string[] input = new string[] { "1", "2", "1001" };
+            List<int> expectedResult = new List<int> { 1, 2, 0 };
+
+            // Test
+            List<int> result = validator.Validate(input);
+
+            // Assert
+            Assert.AreEqual(expectedResult, result);
+        }
     }
 }

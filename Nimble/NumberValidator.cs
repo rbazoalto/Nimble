@@ -6,6 +6,7 @@ namespace Nimble
 {
     public class NumberValidator
     {
+        public static readonly int _upperBound = 1000;
         public NumberValidator()
         {
 
@@ -22,11 +23,12 @@ namespace Nimble
             int value = 0;
             List<int> numbers = new List<int>();
             string negativeNumbers = string.Empty;
-
+            
             foreach (var item in parsedInput)
             {
                 success = int.TryParse(item, out value);
-                if (success)
+                // only valid numbers smaller than the upper bound are taken
+                if (success && value <= _upperBound)
                 {
                     // if this is a negative number, we will collected them.
                     if (value < 0)
