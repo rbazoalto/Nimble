@@ -142,9 +142,9 @@ namespace Nimble
         /// </summary>
         /// <param name="numbers">A list of numbers</param>
         /// <returns>The division of the numbers.</returns>
-        public int Divide(List<int> numbers)
+        public double Divide(List<int> numbers)
         {
-            int res = 0;
+            double res = 0;
             int index = 0;
             foreach (var item in numbers)
             {
@@ -154,7 +154,11 @@ namespace Nimble
                     index++;
                     continue;
                 }
-                res /= item;
+                // let's skip zero dividers
+                if (item != 0)
+                {
+                    res /= (double) item;
+                }
             }
 
             return res;
@@ -166,9 +170,9 @@ namespace Nimble
         /// <param name="numbers">A list of numbers</param>
         /// <param name="message">The formatted operation like 1/2</param>
         /// <returns>The division of the first number against the other numbers</returns>
-        public int Divide(List<int> numbers, out string message)
+        public double Divide(List<int> numbers, out string message)
         {
-            int res = 0;
+            double res = 0;
             string operation = string.Empty;
             int index = 0;
 
@@ -181,8 +185,12 @@ namespace Nimble
                     operation = item + "/";
                     continue;
                 }
-                res /= item;
-                operation = operation + item + "/";
+                // let's skip zero dividers
+                if (item != 0)
+                {
+                    res /= (double) item;
+                    operation = operation + item + "/";
+                }
             }
 
             message = operation.Remove(operation.Length - 1) + " = " + res;

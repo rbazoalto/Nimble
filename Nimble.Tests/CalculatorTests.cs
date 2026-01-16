@@ -112,11 +112,11 @@ namespace Nimble.Tests
         {
             // Configure
             Calculator calculator = new Calculator();
-            List<int> input = new List<int> { 8, 2 };
-            int expectedResult = 4;
+            List<int> input = new List<int> { 10, 4 };
+            double expectedResult = 2.5;
 
             // Test
-            int result = calculator.Divide(input);
+            double result = calculator.Divide(input);
 
             // Assert
             Assert.AreEqual(expectedResult, result);
@@ -127,12 +127,12 @@ namespace Nimble.Tests
         {
             // Configure
             Calculator calculator = new Calculator();
-            List<int> input = new List<int> { 8, 2 };
+            List<int> input = new List<int> { 10, 4 };
             string message = string.Empty;
-            string expectedMessage = "8/2 = 4";
+            string expectedMessage = "10/4 = 2.5";
 
             // Test
-            int result = calculator.Divide(input, out message);
+            double result = calculator.Divide(input, out message);
 
             // Assert
             Assert.AreEqual(expectedMessage, message);

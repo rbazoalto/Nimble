@@ -13,6 +13,7 @@ namespace Nimble
             NumberValidator numberValidator = new NumberValidator();
             Calculator calculator = new Calculator();
             int res = 0;
+            double divisionRes = 0;
             string message = string.Empty;
             string upperBoundString = string.Empty;
             int upperBound = 0;
@@ -23,7 +24,7 @@ namespace Nimble
             // We will continue until Ctrl-C is pressed
             while (true)
             {
-                Console.WriteLine("Please add numbers to be added separated by comma or '\\n' char (i.e. 1,2\\n3) Negative numbers are not allowed.");
+                Console.WriteLine("Please add numbers to be added separated by comma or '\\n' char (i.e. 1,2\\n3).");
                 
                 Console.Write("Do you want to deny negative numbers?(y/n) [default: y] : ");
                 denyNegativeNumbersString = Console.ReadLine();
@@ -70,7 +71,7 @@ namespace Nimble
 
 
                     // Finally, we calculate the multiplication of the numbers
-                    res = calculator.Divide(numbers, out message);
+                    divisionRes = calculator.Divide(numbers, out message);
 
                     // Print the result
                     Console.WriteLine(message);
