@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Nimble
 {
-    public class Calculator
+    public class Calculator : ICalculator
     {
         public Calculator()
         {

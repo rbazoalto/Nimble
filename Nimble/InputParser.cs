@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Nimble
 {
-    public class InputParser
+    public class InputParser : IInputParser
     {
         public static readonly string[] _defaultDelimiters = new string[] { ",", "\n" };
 

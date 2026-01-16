@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Nimble
 {
-    public class NumberValidator
+    public class NumberValidator : INumberValidator
     {
         public NumberValidator()
         {
